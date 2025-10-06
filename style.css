@@ -6,9 +6,9 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Main body */
+/* Body background */
 body {
-    background-color: #fdf6e3; /* cream background */
+    background-color: #f5f2e7; /* soft cream */
     color: #013220;
     position: relative;
     min-height: 100vh;
@@ -27,7 +27,7 @@ body {
 .header-section h1 {
     font-size: 3.5em;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.4);
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
 }
 
 .header-section p {
@@ -47,9 +47,9 @@ body {
 }
 
 /* Alternate backgrounds */
-.about-section { background-color: #e8f5e9; } /* pastel green */
+.about-section { background-color: #e8f5e9; color: #013220; } /* pastel green */
 .side-section { background-color: #013220; color: #fdf6e3; display: flex; flex-wrap: wrap; gap: 20px; }
-.contact-section { background-color: #fdf6e3; }
+.contact-section { background-color: #fdf6e3; color: #013220; }
 
 /* Section headings */
 .section h2 {
@@ -97,4 +97,14 @@ a:hover { text-decoration: underline; }
     clip-path: polygon(50% 0%, 70% 20%, 70% 100%, 30% 100%, 30% 20%);
     transition: transform 0.05s linear;
     box-shadow: 0 0 10px #4caf50;
+}
+
+/* Bullets */
+.bullet {
+    position: fixed;
+    width: 6px;
+    height: 12px;
+    background: #4caf50;
+    border-radius: 3px;
+    z-index: 101;
 }
