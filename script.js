@@ -1,15 +1,16 @@
 const rocket = document.querySelector('.rocket');
 
 document.addEventListener('mousemove', (e) => {
-    const windowHeight = window.innerHeight;
     const mouseY = e.clientY;
+    const windowHeight = window.innerHeight;
 
-    // Calculate rocket vertical position
-    const rocketBottom = 20; // bottom margin in px
-    const maxHeight = windowHeight - rocket.offsetHeight - rocketBottom;
+    // Offset from bottom
+    const rocketBottom = 20;
 
-    // Rocket follows mouse vertically
-    const newY = Math.min(Math.max(mouseY, 0), maxHeight);
+    // Calculate vertical position
+    let y = windowHeight - rocketBottom - rocket.offsetHeight;
+    y = y - (windowHeight - mouseY);
 
-    rocket.style.transform = `translate(-50%, -${windowHeight - newY - rocket.offsetHeight - rocketBottom}px)`;
+    rocket.style.transform = `translate(-50%, ${y}px)`;
 });
+
