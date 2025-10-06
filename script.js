@@ -8,7 +8,7 @@ document.addEventListener('mousemove', (e) => {
     const rocketBottom = 20; // bottom margin in px
     const maxHeight = windowHeight - rocket.offsetHeight - rocketBottom;
 
-    // Invert so rocket follows mouse vertically
+    // Rocket follows mouse vertically
     const newY = Math.min(Math.max(mouseY, 0), maxHeight);
 
     rocket.style.transform = `translate(-50%, -${windowHeight - newY - rocket.offsetHeight - rocketBottom}px)`;
