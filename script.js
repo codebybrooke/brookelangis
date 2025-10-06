@@ -4,7 +4,7 @@ document.addEventListener('mousemove', (e) => {
     const mouseX = e.clientX;
     const windowWidth = window.innerWidth;
 
-    // Keep rocket at bottom, move only horizontally
+    // Move rocket horizontally only
     const rocketHalf = rocket.offsetWidth / 2;
     let x = Math.min(Math.max(mouseX, rocketHalf), windowWidth - rocketHalf);
 
