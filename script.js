@@ -1,7 +1,6 @@
 const rocket = document.querySelector('.rocket');
 const bulletContainer = document.querySelector('.bullet-container');
 
-// Track rocket only when user scrolls to footer
 function isInViewport(element) {
     const rect = element.getBoundingClientRect();
     return (
@@ -12,14 +11,12 @@ function isInViewport(element) {
 document.addEventListener('mousemove', (e) => {
     if (isInViewport(rocket)) {
         const mouseX = e.clientX;
-        const rocketRect = rocket.getBoundingClientRect();
         const rocketHalf = rocket.offsetWidth / 2;
         let x = Math.min(Math.max(mouseX, rocketHalf), window.innerWidth - rocketHalf);
         rocket.style.transform = `translateX(${x}px)`;
     }
 });
 
-// Rocket fires bullets when visible
 setInterval(() => {
     if (isInViewport(rocket)) {
         const rocketRect = rocket.getBoundingClientRect();
