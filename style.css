@@ -17,7 +17,7 @@
     z-index: -1;
 }
 
-/* Navigation bar: elegant, transparent, right-aligned */
+/* Navigation bar */
 .navbar {
     position: fixed;
     top: 0;
@@ -55,68 +55,71 @@
 
 /* General section styling */
 .section {
-    padding: 80px 40px;
+    padding: 60px 30px;
     max-width: 900px;
-    margin: 40px auto;
+    margin: 30px auto;
     border-radius: 15px;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.05);
     line-height: 1.6;
+    background-color: rgba(255,255,255,0.85); /* semi-transparent white */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
-/* Alternating section backgrounds */
-.hero-section { 
-    background-color: rgba(1,50,32,0.9); 
-    color: #fdf6e3; 
+/* Hero adjustments */
+.hero-section {
+    background-color: rgba(1,50,32,0.9);
+    color: #fdf6e3;
     position: relative;
-    height: 60vh;
-    display: flex;
-    align-items: flex-end;
-    padding-bottom: 60px;
+    height: auto; /* allow it to shrink to content */
+    padding-top: 40px;
+    padding-bottom: 80px;
     border-radius: 15px;
+    margin-top: 60px; /* account for navbar */
 }
 
 .hero-text {
-    max-width: 800px;
-    margin-left: 20px;
-    margin-right: 20px;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
 }
 
 .hero-text h1 {
-    font-size: 3rem;
+    font-size: 2.8rem;
     color: #fdf6e3;
-    line-height: 1.2;
+    margin-bottom: 10px;
 }
 
 .hero-text h3 {
-    font-size: 1.3rem;
-    margin-top: 15px;
+    font-size: 1.2rem;
+    margin: 10px 0;
 }
 
 .tagline {
     margin-top: 20px;
     font-style: italic;
+    font-size: 1rem;
 }
 
 /* Alternate section colors */
-.about-section { background-color: rgba(224, 245, 224, 0.85); color: #013220; }
+.about-section { background-color: rgba(224, 245, 224, 0.8); color: #013220; }
 .skills-section { background-color: rgba(255, 255, 255, 0.9); color: #013220; }
 .experience-section { background-color: rgba(1, 50, 32, 0.85); color: #fdf6e3; }
-.education-section { background-color: rgba(207, 244, 207, 0.85); color: #013220; }
+.education-section { background-color: rgba(207, 244, 207, 0.8); color: #013220; }
 .contact-section { background-color: rgba(255, 255, 255, 0.9); color: #013220; }
 
 /* Section headings */
 .section h2 {
-    font-size: 2em;
+    font-size: 1.9em;
     margin-bottom: 20px;
     color: inherit;
-    border-bottom: 3px solid #4caf50;
+    border-bottom: 2px solid #4caf50;
     display: inline-block;
-    padding-bottom: 5px;
+    padding-bottom: 4px;
 }
 
-/* Job experience */
+/* Job experience spacing */
 .job {
-    margin-bottom: 30px;
+    margin-bottom: 25px;
 }
 
 /* Lists */
