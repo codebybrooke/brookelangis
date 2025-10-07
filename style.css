@@ -53,18 +53,17 @@
     color: #4caf50;
 }
 
-/* Section styling */
+/* General section styling */
 .section {
     padding: 80px 40px;
     max-width: 900px;
     margin: 40px auto;
     border-radius: 15px;
-    background-color: rgba(255,255,255,0.8);
     box-shadow: 0 6px 15px rgba(0,0,0,0.05);
     line-height: 1.6;
 }
 
-/* Alternate pastel/dark green backgrounds for headings */
+/* Alternating section backgrounds */
 .hero-section { 
     background-color: rgba(1,50,32,0.9); 
     color: #fdf6e3; 
@@ -74,6 +73,12 @@
     align-items: flex-end;
     padding-bottom: 60px;
     border-radius: 15px;
+}
+
+.hero-text {
+    max-width: 800px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .hero-text h1 {
@@ -92,21 +97,44 @@
     font-style: italic;
 }
 
+/* Alternate section colors */
+.about-section { background-color: rgba(224, 245, 224, 0.85); color: #013220; }
+.skills-section { background-color: rgba(255, 255, 255, 0.9); color: #013220; }
+.experience-section { background-color: rgba(1, 50, 32, 0.85); color: #fdf6e3; }
+.education-section { background-color: rgba(207, 244, 207, 0.85); color: #013220; }
+.contact-section { background-color: rgba(255, 255, 255, 0.9); color: #013220; }
+
 /* Section headings */
 .section h2 {
     font-size: 2em;
     margin-bottom: 20px;
-    color: #013220;
+    color: inherit;
     border-bottom: 3px solid #4caf50;
     display: inline-block;
     padding-bottom: 5px;
+}
+
+/* Job experience */
+.job {
+    margin-bottom: 30px;
+}
+
+/* Lists */
+ul {
+    margin-left: 20px;
 }
 
 /* Links */
 a { color: inherit; }
 a:hover { text-decoration: underline; }
 
-/* Rocket */
+/* Footer & Rocket */
+.footer {
+    position: relative;
+    width: 100%;
+    height: 200px;
+}
+
 .rocket-container {
     position: relative;
     width: 100%;
@@ -123,6 +151,7 @@ a:hover { text-decoration: underline; }
     transition: transform 0.05s linear;
     position: absolute;
     bottom: 0;
+    z-index: 200;
 }
 
 /* Bullets */
@@ -132,4 +161,5 @@ a:hover { text-decoration: underline; }
     height: 12px;
     background: #4caf50;
     border-radius: 3px;
+    z-index: 200;
 }
