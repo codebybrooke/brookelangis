@@ -1,33 +1,42 @@
 const rocket = document.querySelector('.rocket');
 const bulletContainer = document.querySelector('.bullet-container');
 
-// Rocket horizontal movement
+// Track rocket only when user scrolls to footer
+function isInViewport(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top < window.innerHeight && rect.bottom >= 0
+    );
+}
+
 document.addEventListener('mousemove', (e) => {
-    const mouseX = e.clientX;
-    const windowWidth = window.innerWidth;
-
-    const rocketHalf = rocket.offsetWidth / 2;
-    let x = Math.min(Math.max(mouseX, rocketHalf), windowWidth - rocketHalf);
-
-    rocket.style.transform = `translateX(${x - windowWidth/2}px)`;
+    if (isInViewport(rocket)) {
+        const mouseX = e.clientX;
+        const rocketRect = rocket.getBoundingClientRect();
+        const rocketHalf = rocket.offsetWidth / 2;
+        let x = Math.min(Math.max(mouseX, rocketHalf), window.innerWidth - rocketHalf);
+        rocket.style.transform = `translateX(${x}px)`;
+    }
 });
 
-// Rocket shoots bullets upward periodically
+// Rocket fires bullets when visible
 setInterval(() => {
-    const rocketRect = rocket.getBoundingClientRect();
-    const bullet = document.createElement('div');
-    bullet.classList.add('bullet');
-    bullet.style.left = rocketRect.left + rocketRect.width/2 - 3 + 'px';
-    bullet.style.top = rocketRect.top + 'px';
-    document.body.appendChild(bullet);
+    if (isInViewport(rocket)) {
+        const rocketRect = rocket.getBoundingClientRect();
+        const bullet = document.createElement('div');
+        bullet.classList.add('bullet');
+        bullet.style.left = rocketRect.left + rocketRect.width / 2 - 3 + 'px';
+        bullet.style.top = rocketRect.top + 'px';
+        document.body.appendChild(bullet);
 
-    let bulletY = rocketRect.top;
-    const interval = setInterval(() => {
-        bulletY -= 8; // speed
-        bullet.style.top = bulletY + 'px';
-        if (bulletY < -20) {
-            bullet.remove();
-            clearInterval(interval);
-        }
-    }, 16);
-}, 300); // fires every 0.3 seconds
+        let bulletY = rocketRect.top;
+        const interval = setInterval(() => {
+            bulletY -= 8;
+            bullet.style.top = bulletY + 'px';
+            if (bulletY < -20) {
+                bullet.remove();
+                clearInterval(interval);
+            }
+        }, 16);
+    }
+}, 300);
