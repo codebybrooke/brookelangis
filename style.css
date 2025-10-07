@@ -1,4 +1,4 @@
-/* Reset and font */
+/* Reset & fonts */
 * {
     margin: 0;
     padding: 0;
@@ -6,50 +6,66 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Body background */
-body {
-    background-color: #f5f2e7; /* soft cream */
-    color: #013220;
-    position: relative;
-    min-height: 100vh;
+/* Fixed background */
+.fixed-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #f5f2e7, #e8f5e9);
+    z-index: -1;
 }
 
-/* Header */
-.header-section {
-    text-align: center;
-    padding: 80px 20px 60px 20px;
-    background: linear-gradient(135deg, #0b3d1f, #4caf50);
+/* Navigation menu */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(1,50,32,0.9);
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 10px 0;
+}
+
+.navbar li {
+    margin: 0 20px;
+}
+
+.navbar a {
+    text-decoration: none;
     color: #fdf6e3;
-    border-radius: 0 0 50% 50% / 0 0 10% 10%;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    font-weight: bold;
+    transition: color 0.3s;
 }
 
-.header-section h1 {
-    font-size: 3.5em;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+.navbar a:hover {
+    color: #4caf50;
 }
 
-.header-section p {
-    font-size: 1.5em;
-    color: #fdf6e3;
-    letter-spacing: 0.5px;
-}
-
-/* Sections */
+/* Section base style */
 .section {
-    padding: 40px 20px;
-    margin: 40px auto;
+    padding: 100px 20px 80px 20px;
     max-width: 900px;
-    border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin: auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.1);
     line-height: 1.6;
 }
 
 /* Alternate backgrounds */
-.about-section { background-color: #e8f5e9; color: #013220; } /* pastel green */
-.side-section { background-color: #013220; color: #fdf6e3; display: flex; flex-wrap: wrap; gap: 20px; }
-.contact-section { background-color: #fdf6e3; color: #013220; }
+.hero-section { background-color: #013220; color: #fdf6e3; text-align: center; }
+.about-section { background-color: #e8f5e9; color: #013220; }
+.skills-section { background-color: #fdf6e3; color: #013220; }
+.experience-section { background-color: #013220; color: #fdf6e3; }
+.education-section { background-color: #f5f2e7; color: #013220; }
+.contact-section { background-color: #e8f5e9; color: #013220; }
 
 /* Section headings */
 .section h2 {
@@ -60,34 +76,16 @@ body {
     padding-bottom: 5px;
 }
 
-/* Side-by-side cards */
-.side-card {
-    flex: 1;
-    min-width: 280px;
-    padding: 20px;
-    border-radius: 15px;
-    background-color: rgba(255,255,255,0.05);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-
-.side-section ul {
-    padding-left: 20px;
-    list-style: square;
-}
-
 /* Links */
-a { color: #013220; text-decoration: none; }
+a { color: inherit; }
 a:hover { text-decoration: underline; }
 
 /* Rocket */
 .rocket-container {
-    position: fixed;
-    bottom: 20px;
-    pointer-events: none;
+    position: relative;
     width: 100%;
-    z-index: 100;
-    display: flex;
-    justify-content: center;
+    height: 150px;
+    margin-top: 50px;
 }
 
 .rocket {
@@ -95,16 +93,17 @@ a:hover { text-decoration: underline; }
     height: 100px;
     background: #013220;
     clip-path: polygon(50% 0%, 70% 20%, 70% 100%, 30% 100%, 30% 20%);
-    transition: transform 0.05s linear;
     box-shadow: 0 0 10px #4caf50;
+    transition: transform 0.05s linear;
+    position: absolute;
+    bottom: 0;
 }
 
 /* Bullets */
 .bullet {
-    position: fixed;
+    position: absolute;
     width: 6px;
     height: 12px;
     background: #4caf50;
     border-radius: 3px;
-    z-index: 101;
 }
