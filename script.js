@@ -1,39 +1,53 @@
-const rocket = document.querySelector('.rocket');
-const bulletContainer = document.querySelector('.bullet-container');
+const rocket = document.getElementById('rocket');
+const sections = document.querySelectorAll('.section');
 
-function isInViewport(element) {
-    const rect = element.getBoundingClientRect();
-    return (
-        rect.top < window.innerHeight && rect.bottom >= 0
-    );
-}
+let lastShotTime = 0;
+const fireRate = 300; // ms between bullets
 
 document.addEventListener('mousemove', (e) => {
-    if (isInViewport(rocket)) {
-        const mouseX = e.clientX;
-        const rocketHalf = rocket.offsetWidth / 2;
-        let x = Math.min(Math.max(mouseX, rocketHalf), window.innerWidth - rocketHalf);
-        rocket.style.transform = `translateX(${x}px)`;
+  // Move rocket horizontally
+  rocket.style.left = e.clientX - rocket.offsetWidth / 2 + 'px';
+
+  const now = Date.now();
+  if (now - lastShotTime < fireRate) return;
+  lastShotTime = now;
+
+  // Create bullet
+  const bullet = document.createElement('div');
+  bullet.classList.add('bullet');
+
+  const rocketRect = rocket.getBoundingClientRect();
+  const scrollY = window.scrollY || window.pageYOffset;
+
+  bullet.style.left = rocketRect.left + rocket.offsetWidth / 2 - 3 + 'px';
+  bullet.style.top = rocketRect.top + scrollY + 'px';
+  document.body.appendChild(bullet);
+
+  let velocity = -10; // upward speed
+  let hasBounced = false;
+
+  const bulletInterval = setInterval(() => {
+    const top = parseFloat(bullet.style.top);
+    const newTop = top + velocity;
+
+    // Check collision with each section
+    sections.forEach(section => {
+      const rect = section.getBoundingClientRect();
+      const secTop = rect.top + scrollY;
+
+      // Only bounce once per bullet
+      if (!hasBounced && newTop <= secTop + section.offsetHeight && newTop >= secTop) {
+        velocity = -velocity * 0.5; // bounce slower
+        hasBounced = true;
+      }
+    });
+
+    bullet.style.top = newTop + 'px';
+
+    // Remove bullet if off-screen
+    if (newTop < -20 || newTop > window.innerHeight + scrollY) {
+      bullet.remove();
+      clearInterval(bulletInterval);
     }
+  }, 20);
 });
-
-setInterval(() => {
-    if (isInViewport(rocket)) {
-        const rocketRect = rocket.getBoundingClientRect();
-        const bullet = document.createElement('div');
-        bullet.classList.add('bullet');
-        bullet.style.left = rocketRect.left + rocketRect.width / 2 - 3 + 'px';
-        bullet.style.top = rocketRect.top + 'px';
-        document.body.appendChild(bullet);
-
-        let bulletY = rocketRect.top;
-        const interval = setInterval(() => {
-            bulletY -= 8;
-            bullet.style.top = bulletY + 'px';
-            if (bulletY < -20) {
-                bullet.remove();
-                clearInterval(interval);
-            }
-        }, 16);
-    }
-}, 300);
